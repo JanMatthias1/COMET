@@ -58,3 +58,6 @@ Predictions are stored as .pkl files in the specified output directories. These 
 
 ## Pretrained Weights
 Available pretrained weights for different models are listed under `experiments/weights/`. These can be used directly for deploying models and running inference scripts.
+
+### Note
+Code has been test on Linux and installation is expected to take less than 2 hours on a typical computer with internet connection.
