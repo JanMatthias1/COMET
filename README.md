@@ -52,9 +52,9 @@ Predictions are stored as .pkl files in the specified output directories. These 
 - `experiments/task_schemas/`: stores task schema files: dictionary file to specify key information of multiple datasets. The keys are names of the datasets, value is a dictionary containing tasks_schema_path, component_types_schema_path and np_prop_schema_path as keys
 - `experiments/data_json/`: stores raw LNP data
 - `experiments/processed_data_dirs/`: stores processed lmdb datasets for training and inference
-- `experiments/weights/`: stores pretrained COMET weights, accompanying example inference scripts to use them are `inference_script_*.py`
+- `experiments/weights/`: stores pretrained COMET weights, accompanying example inference scripts to use them are `inference_script_*.py` ([download example weights here](https://drive.google.com/drive/folders/1IBz8iWrPX5Xnlb02VaTNR-7xuKuYUHZv?usp=drive_link))
 - `unimol/`: Core logic for model operations.
-- `ckp/`: Pretrained model weights.
+- `ckp/`: Pretrained model weights ([download here](https://drive.google.com/drive/folders/1Ul89o6Vj93T01foKa1-898H32bJLTJkm?usp=drive_link))
 
 ## Pretrained Weights
 Available pretrained weights for different models are listed under `experiments/weights/`. These can be used directly for deploying models and running inference scripts.
