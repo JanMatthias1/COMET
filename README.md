@@ -1,7 +1,7 @@
 # Lipid Nanoparticle Design with Composite Material Transformer (COMET)
 ===================================================================
 
-## Setup and Installation
+## Setup and Installation --
 
 ### Requirements
 - Python 3.10
