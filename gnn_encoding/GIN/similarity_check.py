@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.colors as mcolors
 import pandas as pd
 from numpy.linalg import norm
 
@@ -46,7 +47,7 @@ print("Similarity check done\n")
 
 # Plot similarity matrix
 fig, ax = plt.subplots(figsize=(14, 12))
-im = ax.imshow(sim_matrix, cmap='coolwarm', vmin=0.8, vmax=1.0)
+im = ax.imshow(sim_matrix, cmap='plasma', vmin=0.8, vmax=1.0)
 
 ax.set_xticks(range(n))
 ax.set_yticks(range(n))
@@ -58,13 +59,13 @@ for i in range(n):
     for j in range(n):
         ax.text(j, i, f'{sim_matrix[i, j]:.2f}',
                 ha='center', va='center', fontsize=6,
-                color='black' if 0.88 < sim_matrix[i, j] < 0.98 else 'white')
+                color='black' if sim_matrix[i, j] > 0.95 else 'white')
 
 plt.colorbar(im, ax=ax, label='Cosine Similarity')
 ax.set_title('Pairwise Cosine Similarity of GIN Lipid Embeddings', fontsize=13, pad=20)
 plt.tight_layout()
 
 output_path = r'C:\Users\danie\Local Desktop\COMET\gnn_encoding\GIN\gin_similarity_matrix.png'
-plt.savefig(output_path, dpi=150, bbox_inches='tight')
+plt.savefig(output_path, dpi=600, bbox_inches='tight')
 plt.show()
 print(f"Saved to {output_path}")
