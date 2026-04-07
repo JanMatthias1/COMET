@@ -138,4 +138,4 @@ dmypy.json
 experiments/weights/*
 experiments/save_demo/*
 experiments/tmp_save_demo/*
-ckp/
+ckp/schnet/qm9_data/
