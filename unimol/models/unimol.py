@@ -58,6 +58,11 @@ class NPUniMolModel(BaseUnicoreModel):
         )
         parser.add_argument('--load-full-np-model', default=False, action='store_true',
                         help='load weights of full LNP model or only those of its mol_model')
+        parser.add_argument(
+        "--gnn-embed-dim",
+        type=int,
+        default=300,
+        help="Dimension of the pre-computed GNN embeddings",)
 
         # args for cls token and head
         parser.add_argument(
@@ -357,9 +362,9 @@ class NPUniMolModel(BaseUnicoreModel):
                     component_type_embed_dim = args.component_types_embed_dim
                 sum_component_types_embed_dim += component_type_embed_dim
 
-            self.component_rep_dim = args.encoder_embed_dim + args.percent_embed_dim + sum_component_types_embed_dim
+            self.component_rep_dim = args.encoder_embed_dim + args.percent_embed_dim + args.gnn_embed_dim + sum_component_types_embed_dim
         else:
-            self.component_rep_dim = args.encoder_embed_dim + args.percent_embed_dim + args.component_types_embed_dim
+            self.component_rep_dim = args.encoder_embed_dim + args.percent_embed_dim + args.gnn_embed_dim + args.component_types_embed_dim
 
         # Create hidden state for [CLS] of LNP model
         # self.lnp_CLS_embed =  nn.Parameter(torch.zeros(self.component_rep_dim).normal_(mean=0.0, std=0.02))
@@ -506,6 +511,12 @@ class NPUniMolModel(BaseUnicoreModel):
         flattened_mol_batch_ids[flattened_mol_batch_ids==-1] = mol_rep.shape[0] - 1 # replace -1 index values with largest index value to select pad_idx's rep, to avoid indexing error from index_select
         flattened_lnp_mol_rep = torch.index_select(mol_rep, 0, flattened_mol_batch_ids)
         lnp_mol_rep = torch.unflatten(flattened_lnp_mol_rep, 0, mol_batch_ids_shape)
+        # Convert GNN embeds to rep using the exact same indexing logic
+        gnn_embed = mol_model_input['gnn_embed'].type_as(mol_rep)
+        pad_gnn = torch.zeros_like(gnn_embed[0]).unsqueeze(0)
+        gnn_embed = torch.cat([gnn_embed, pad_gnn], dim=0)
+        flattened_lnp_gnn_rep = torch.index_select(gnn_embed, 0, flattened_mol_batch_ids)
+        lnp_gnn_rep = torch.unflatten(flattened_lnp_gnn_rep, 0, mol_batch_ids_shape)
 
         # Convert percents to rep 
         percents = np_model_input['percents']
@@ -536,14 +547,14 @@ class NPUniMolModel(BaseUnicoreModel):
                     component_types_rep_dict[input_key_value] = component_types_rep_dict
                     component_types_rep_list.append(component_types_rep)
 
-                rep_list_to_cat = [lnp_mol_rep, percents_rep] + component_types_rep_list
+                rep_list_to_cat = [lnp_mol_rep, lnp_gnn_rep, percents_rep] + component_types_rep_list
                 lnp_component_rep = torch.cat(rep_list_to_cat, dim=-1) # last dim: concat lnp_mol_rep, percents_rep and component_types_rep's, self.component_rep_dim
                 
             else:
                 component_types_rep = self.component_type_embed_tokens(component_types)
-                lnp_component_rep = torch.cat([lnp_mol_rep, percents_rep, component_types_rep], dim=-1) # last dim: self.component_rep_dim 
+                lnp_component_rep = torch.cat([lnp_mol_rep, lnp_gnn_rep, percents_rep, component_types_rep], dim=-1) # last dim: self.component_rep_dim 
         else:
-            lnp_component_rep = torch.cat([lnp_mol_rep, percents_rep], dim=-1) # last dim: self.component_rep_dim 
+            lnp_component_rep = torch.cat([lnp_mol_rep, lnp_gnn_rep, percents_rep], dim=-1) # last dim: self.component_rep_dim 
 
         bsz = lnp_component_rep.shape[0]
         lnp_component_mask = torch.ones([bsz,lnp_component_rep.shape[1]]).bool().to(lnp_component_rep)

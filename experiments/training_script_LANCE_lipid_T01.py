@@ -35,7 +35,7 @@ warmups=[0.06]
 dropouts=[0.1]
 epoch_list = [200]
 lrs = [1e-4]
-batch_sizes = [64]
+batch_sizes = [16]
 loss_sample_dropouts = [0]
 loss_funcs = ['np_finetune_contrastive']
 full_dataset_task_schema_path = "task_schemas/in_house_lnp_master_schema_NPratio_AOvolratio.json"
@@ -48,7 +48,7 @@ contrast_margin_coeffs = [0.01]
 percent_noise_types = ['normal_proportionate']
 save_all_model_weights = True
 train_data_ratios = [1]
-seeds=[1,2,3,4,5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
+seeds=[1]
 
 for seed in seeds:
     for lnp_encoder_attention_heads in lnp_encoder_attention_heads_list:
@@ -80,7 +80,7 @@ for seed in seeds:
                                                                                     max_epoch = int(epoch // (1 - loss_sample_dropout))
 
                                                                                     # unique experiment name (identifier)
-                                                                                    exp_name=f'demo_in_house_ED09262023_fig3dii_fold_V0_lnp_{loss_func}-bs{batch_size}-lr{lr}-lnpmodparams{lnp_encoder_layers}-{lnp_encoder_embed_dim}-{lnp_encoder_ffn_embed_dim}-{lnp_encoder_attention_heads}-trainrat{train_data_ratio}-ep{max_epoch}-pat{patience}-metric{metric}-cagrad{cagrad_c}-percentnoise{percent_noise}-labelmargin{contrast_margin_coeff}-seed{seed}_OS'  
+                                                                                    exp_name=f'demo_in_house_ED09262023_fig3dii_fold_V0_lnp_{loss_func}-bs{batch_size}-lr{lr}-lnpmodparams{lnp_encoder_layers}-{lnp_encoder_embed_dim}-{lnp_encoder_ffn_embed_dim}-{lnp_encoder_attention_heads}-trainrat{train_data_ratio}-ep{max_epoch}-pat{patience}-metric{metric}-cagrad{cagrad_c}-percentnoise{percent_noise}-labelmargin{contrast_margin_coeff}-seed{seed}_OS_GIN_fusion'  
                                                                                     
                                                                                     print("task_name: ", task_name)
                                                                                     if save_all_model_weights:
@@ -144,8 +144,9 @@ for seed in seeds:
                                                                                         --train-data-ratio {train_data_ratio} \
                                                                                         --lnp-encoder-layers {lnp_encoder_layers} --lnp-encoder-embed-dim {lnp_encoder_embed_dim} --lnp-encoder-ffn-embed-dim {lnp_encoder_ffn_embed_dim} --lnp-encoder-attention-heads {lnp_encoder_attention_heads} \
                                                                                         --noise-augment-percent --percent-noise {percent_noise} --percent-noise-type {percent_noise_type} \
-                                                                                        --contrast-margin-coeff {contrast_margin_coeff}", 
-                                                                                        shell=True)
+    --contrast-margin-coeff {contrast_margin_coeff} \
+    --gnn-embed-path ../lance_lipid_gin_embeddings.npy --gnn-embed-dim 300", 
+    shell=True)
 
                                                                                     # eval params
                                                                                     eval_batch_size = 32
@@ -167,5 +168,6 @@ for seed in seeds:
                                                                                         --results-path {eval_results_path} \
                                                                                         --lnp-encoder-layers {lnp_encoder_layers} --lnp-encoder-embed-dim {lnp_encoder_embed_dim} --lnp-encoder-ffn-embed-dim {lnp_encoder_ffn_embed_dim} --lnp-encoder-attention-heads {lnp_encoder_attention_heads} \
                                                                                         --full-dataset-task-schema-path {full_dataset_task_schema_path} \
-                                                                                        --load-full-np-model --concat-datasets",
-                                                                                        shell=True)
+    --load-full-np-model --concat-datasets \
+    --gnn-embed-path ../lance_lipid_gin_embeddings.npy --gnn-embed-dim 300",
+    shell=True)

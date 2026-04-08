@@ -4,7 +4,7 @@
 
 import logging
 import os
-
+import torch
 import numpy as np
 from unimol.core.data import (
     Dictionary,
@@ -127,6 +127,20 @@ task_metainfo = {
     },
 }
 
+class GNNEmbedDataset(torch.utils.data.Dataset):
+    def __init__(self, smi_dataset, npy_path):
+        self.smi_dataset = smi_dataset
+        self.embeddings = np.load(npy_path, allow_pickle=True).item()
+        # Fallback dimension if SMILES is missing
+        self.embed_dim = len(next(iter(self.embeddings.values()))) 
+        
+    def __len__(self):
+        return len(self.smi_dataset)
+        
+    def __getitem__(self, idx):
+        smi = self.smi_dataset[idx]
+        return self.embeddings.get(smi, np.zeros(self.embed_dim, dtype=np.float32))
+
 
 @register_task("mol_np_finetune")
 class UniMolNPFinetuneTask(UnicoreTask):
@@ -183,6 +197,12 @@ class UniMolNPFinetuneTask(UnicoreTask):
             type=int,
             help="1: only reserve polar hydrogen; 0: no hydrogen; -1: all hydrogen ",
         )
+        parser.add_argument(
+            "--gnn-embed-path",
+            default=None,
+            type=str,
+            help="path to the pretrained GNN embeddings (.npy)",
+)
 
         # arg for interpretation and explanations
         parser.add_argument(
@@ -351,6 +371,8 @@ class UniMolNPFinetuneTask(UnicoreTask):
         """
 
         smi_dataset = KeyDataset(dataset, "smi")
+        gnn_embed_dataset = GNNEmbedDataset(smi_dataset, self.args.gnn_embed_path)
+        gnn_embed_dataset = FromNumpyDataset(gnn_embed_dataset, convert_to_np=True)
         # random sample one out of conf_size conformations
         sample_dataset = ConformerSampleDataset(
             dataset, self.args.seed, "atoms", "coordinates"
@@ -411,6 +433,7 @@ class UniMolNPFinetuneTask(UnicoreTask):
                     pad_idx=0,
                 ),
                 "smi_name": RawArrayDataset(smi_dataset),
+                "gnn_embed": RawArrayDataset(gnn_embed_dataset),
             },
         )
         
@@ -645,6 +668,8 @@ class UniMolNPFinetuneTask(UnicoreTask):
 
         # Set up mol dataset
         smi_dataset = KeyDataset(dataset, "smi")
+        gnn_embed_dataset = GNNEmbedDataset(smi_dataset, self.args.gnn_embed_path)
+        gnn_embed_dataset = FromNumpyDataset(gnn_embed_dataset, convert_to_np=True)
         # random sample one out of conf_size conformations
         sample_dataset = ConformerSampleDataset(
             dataset, self.args.seed, "atoms", "coordinates"
@@ -764,6 +789,7 @@ class UniMolNPFinetuneTask(UnicoreTask):
                     pad_idx=0,
                 ),
                 "smi_name": RawArrayDataset(smi_dataset),
+                "gnn_embed": RawArrayDataset(gnn_embed_dataset),
             },
         )
 
