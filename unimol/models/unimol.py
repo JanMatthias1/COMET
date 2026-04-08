@@ -362,9 +362,13 @@ class NPUniMolModel(BaseUnicoreModel):
                     component_type_embed_dim = args.component_types_embed_dim
                 sum_component_types_embed_dim += component_type_embed_dim
 
-            self.component_rep_dim = args.encoder_embed_dim + args.percent_embed_dim + args.gnn_embed_dim + sum_component_types_embed_dim
+            self.component_rep_dim = args.encoder_embed_dim + args.percent_embed_dim + sum_component_types_embed_dim
         else:
-            self.component_rep_dim = args.encoder_embed_dim + args.percent_embed_dim + args.gnn_embed_dim + args.component_types_embed_dim
+            self.component_rep_dim = args.encoder_embed_dim + args.percent_embed_dim + args.component_types_embed_dim
+        
+        # STRATEGY B: Add Projection Layer and Learnable Gate
+        self.gnn_proj = nn.Linear(args.gnn_embed_dim, args.encoder_embed_dim)
+        self.gnn_gate = nn.Parameter(torch.zeros(1))
 
         # Create hidden state for [CLS] of LNP model
         # self.lnp_CLS_embed =  nn.Parameter(torch.zeros(self.component_rep_dim).normal_(mean=0.0, std=0.02))
@@ -518,6 +522,13 @@ class NPUniMolModel(BaseUnicoreModel):
         flattened_lnp_gnn_rep = torch.index_select(gnn_embed, 0, flattened_mol_batch_ids)
         lnp_gnn_rep = torch.unflatten(flattened_lnp_gnn_rep, 0, mol_batch_ids_shape)
 
+        # STRATEGY B: Project GNN to 512D and inject it into the Uni-Mol representation
+        projected_gnn = self.gnn_proj(lnp_gnn_rep)
+        lnp_mol_rep = lnp_mol_rep + (self.gnn_gate * projected_gnn)
+
+        if torch.rand(1).item() < 0.05: # Prints ~5% of the time to avoid spamming your log
+            print(f"--- Current GNN Gate (Alpha) Value: {self.gnn_gate.item():.5f} ---")
+
         # Convert percents to rep 
         percents = np_model_input['percents']
         def get_percent_features(percent, c_type):
@@ -547,14 +558,14 @@ class NPUniMolModel(BaseUnicoreModel):
                     component_types_rep_dict[input_key_value] = component_types_rep_dict
                     component_types_rep_list.append(component_types_rep)
 
-                rep_list_to_cat = [lnp_mol_rep, lnp_gnn_rep, percents_rep] + component_types_rep_list
-                lnp_component_rep = torch.cat(rep_list_to_cat, dim=-1) # last dim: concat lnp_mol_rep, percents_rep and component_types_rep's, self.component_rep_dim
+                rep_list_to_cat = [lnp_mol_rep, percents_rep] + component_types_rep_list
+                lnp_component_rep = torch.cat(rep_list_to_cat, dim=-1) 
                 
             else:
                 component_types_rep = self.component_type_embed_tokens(component_types)
-                lnp_component_rep = torch.cat([lnp_mol_rep, lnp_gnn_rep, percents_rep, component_types_rep], dim=-1) # last dim: self.component_rep_dim 
+                lnp_component_rep = torch.cat([lnp_mol_rep, percents_rep, component_types_rep], dim=-1)  
         else:
-            lnp_component_rep = torch.cat([lnp_mol_rep, lnp_gnn_rep, percents_rep], dim=-1) # last dim: self.component_rep_dim 
+            lnp_component_rep = torch.cat([lnp_mol_rep, percents_rep], dim=-1)
 
         bsz = lnp_component_rep.shape[0]
         lnp_component_mask = torch.ones([bsz,lnp_component_rep.shape[1]]).bool().to(lnp_component_rep)

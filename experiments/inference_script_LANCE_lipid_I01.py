@@ -32,7 +32,9 @@ deploy_data_dirs = ["in_house_lnp_library"]
 
 # list the dir path of saved model weights here
 deploy_model_dirs = [
-    "./weights/save_demo_in_house_ED09262023_fig3dDepolyTrain_fold_V0_lnp_np_finetune_contrastive-bs64-lr0.0001-lnpmodparams8-256-256-8-trainrat1-ep200-pat20-metricvalid_spearmanr_coeff-cagrad0.2-percentnoise0.1-labelmargin0.01-seed1_exp19",
+    # Add your new GIN Strategy B model path (update with your exact folder name)
+    "./tmp_save_demo/save_demo_in_house_ED09262023_fig3dii_fold_V0_lnp_np_finetune_contrastive-bs16-lr0.0001-lnpmodparams8-256-256-8-trainrat1-ep200-pat20-metricvalid_spearmanr_coeff-cagrad0.2-percentnoise0.1-labelmargin0.01-seed1_OS_GIN_StrategyB"
+    #"./weights/save_demo_in_house_ED09262023_fig3dDepolyTrain_fold_V0_lnp_np_finetune_contrastive-bs64-lr0.0001-lnpmodparams8-256-256-8-trainrat1-ep200-pat20-metricvalid_spearmanr_coeff-cagrad0.2-percentnoise0.1-labelmargin0.01-seed1_exp19",
     # "./weights/save_demo_in_house_ED09262023_fig3dDepolyTrain_fold_V1_lnp_np_finetune_contrastive-bs64-lr0.0001-lnpmodparams8-256-256-8-trainrat1-ep200-pat20-metricvalid_spearmanr_coeff-cagrad0.2-percentnoise0.1-labelmargin0.01-seed1_exp19",
     # "./weights/save_demo_in_house_ED09262023_fig3dDepolyTrain_fold_V2_lnp_np_finetune_contrastive-bs64-lr0.0001-lnpmodparams8-256-256-8-trainrat1-ep200-pat20-metricvalid_spearmanr_coeff-cagrad0.2-percentnoise0.1-labelmargin0.01-seed1_exp19",
     # "./weights/save_demo_in_house_ED09262023_fig3dDepolyTrain_fold_V3_lnp_np_finetune_contrastive-bs64-lr0.0001-lnpmodparams8-256-256-8-trainrat1-ep200-pat20-metricvalid_spearmanr_coeff-cagrad0.2-percentnoise0.1-labelmargin0.01-seed1_exp19",

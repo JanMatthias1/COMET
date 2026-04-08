@@ -80,7 +80,7 @@ for seed in seeds:
                                                                                     max_epoch = int(epoch // (1 - loss_sample_dropout))
 
                                                                                     # unique experiment name (identifier)
-                                                                                    exp_name=f'demo_in_house_ED09262023_fig3dii_fold_V0_lnp_{loss_func}-bs{batch_size}-lr{lr}-lnpmodparams{lnp_encoder_layers}-{lnp_encoder_embed_dim}-{lnp_encoder_ffn_embed_dim}-{lnp_encoder_attention_heads}-trainrat{train_data_ratio}-ep{max_epoch}-pat{patience}-metric{metric}-cagrad{cagrad_c}-percentnoise{percent_noise}-labelmargin{contrast_margin_coeff}-seed{seed}_OS_GIN_fusion'  
+                                                                                    exp_name = "GIN_StrategyB_Run"
                                                                                     
                                                                                     print("task_name: ", task_name)
                                                                                     if save_all_model_weights:
