@@ -366,9 +366,12 @@ class NPUniMolModel(BaseUnicoreModel):
         else:
             self.component_rep_dim = args.encoder_embed_dim + args.percent_embed_dim + args.component_types_embed_dim
         
-        # STRATEGY B: Add Projection Layer and Learnable Gate
-        self.gnn_proj = nn.Linear(args.gnn_embed_dim, args.encoder_embed_dim)
-        self.gnn_gate = nn.Parameter(torch.zeros(1))
+        # STRATEGY B: Consolidated Projection Layer and Learnable Gate
+        # Use args to ensure dimensions stay in sync even if you change configs
+        self.gnn_projection = nn.Linear(args.gnn_embed_dim, args.encoder_embed_dim)
+        
+        # Initialized at -4 so sigmoid(alpha) starts near 0 (blocking noise)
+        self.alpha = nn.Parameter(torch.full((1,), -4.0))
 
         # Create hidden state for [CLS] of LNP model
         # self.lnp_CLS_embed =  nn.Parameter(torch.zeros(self.component_rep_dim).normal_(mean=0.0, std=0.02))
@@ -522,12 +525,13 @@ class NPUniMolModel(BaseUnicoreModel):
         flattened_lnp_gnn_rep = torch.index_select(gnn_embed, 0, flattened_mol_batch_ids)
         lnp_gnn_rep = torch.unflatten(flattened_lnp_gnn_rep, 0, mol_batch_ids_shape)
 
-        # STRATEGY B: Project GNN to 512D and inject it into the Uni-Mol representation
-        projected_gnn = self.gnn_proj(lnp_gnn_rep)
-        lnp_mol_rep = lnp_mol_rep + (self.gnn_gate * projected_gnn)
+        # STRATEGY B: Project GNN and inject it into the Uni-Mol representation
+        gnn_rep_projected = self.gnn_projection(lnp_gnn_rep)
+        gate = torch.sigmoid(self.alpha)
+        lnp_mol_rep = lnp_mol_rep + (gate * gnn_rep_projected)
 
-        if torch.rand(1).item() < 0.05: # Prints ~5% of the time to avoid spamming your log
-            print(f"--- Current GNN Gate (Alpha) Value: {self.gnn_gate.item():.5f} ---")
+        if torch.rand(1).item() < 0.01: # Reduced frequency to 1% to keep logs clean
+            print(f"--- Current GNN Gate Value (Sigmoid Alpha): {gate.item():.5f} ---")
 
         # Convert percents to rep 
         percents = np_model_input['percents']
