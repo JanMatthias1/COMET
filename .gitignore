@@ -139,3 +139,5 @@ experiments/weights/*
 experiments/save_demo/*
 experiments/tmp_save_demo/*
 ckp/schnet/qm9_data/
+schnet/qm9_data/processed/data_v3.pt
+schnet/qm9_data/raw/gdb9.sdf
