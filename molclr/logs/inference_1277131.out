@@ -1,0 +1,10 @@
+============================================
+Running MolCLR inference
+============================================
+Loaded 14 unique SMILES.
+Successfully converted 14 SMILES to graphs.
+Using device: cpu
+Loaded pretrained MolCLR GIN weights.
+Embeddings shape: (14, 512)
+Saved embeddings to /home/jmatthi2/deep_learning/COMET/molclr/molclr_lipid_embeddings.npy
+Done. Output: /home/jmatthi2/deep_learning/COMET/molclr/molclr_lipid_embeddings.npy

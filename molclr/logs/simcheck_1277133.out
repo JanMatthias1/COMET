@@ -1,0 +1,32 @@
+============================================
+Running MolCLR similarity check
+============================================
+Loaded 14 embeddings, dim=512
+
+Pairwise Cosine Similarity Matrix:
+                         OCCCCN(CCCCCCOC(C(CC...  CCCCC/C=C\\C/C=C\\CC...  CCCCCC=CCC=CCCCCCCCC...  OCCN(CCCCCCCC(OC(CCC...  OC(CCCCCCCCCC)CN(CCN...  CN(C)CCCC(OC(CCCCCCC...  O=C1NC(CCCCN(CC(CCCC...  CCCCCCCCC=CCCCCCCCC(...  CCCCCCCCCCCCCCCCCC(=...  CC(C)CCCC(C)C1CCC2C1...  CC(C)CCCC(C)C1CCC2C1...  CCC(CCC(C)C1CCC2C1(C...  CCCCCCCCCCCCCC(=O)OC...  CCCCCCCCCCCCCCCCCC(=...  
+OCCCCN(CCCCCCOC(C(CC...                     1.0000                   0.9998                   1.0000                   1.0000                   1.0000                   0.9999                   1.0000                   1.0000                   1.0000                   0.9995                   0.9997                   0.9995                   0.9999                   0.9999
+CCCCC/C=C\\C/C=C\\CC...                     0.9998                   1.0000                   0.9999                   0.9998                   0.9998                   0.9999                   0.9999                   0.9997                   0.9998                   0.9998                   0.9999                   0.9998                   0.9996                   0.9997
+CCCCCC=CCC=CCCCCCCCC...                     1.0000                   0.9999                   1.0000                   0.9999                   0.9999                   0.9999                   1.0000                   0.9999                   0.9999                   0.9996                   0.9997                   0.9995                   0.9998                   0.9999
+OCCN(CCCCCCCC(OC(CCC...                     1.0000                   0.9998                   0.9999                   1.0000                   1.0000                   0.9999                   1.0000                   1.0000                   1.0000                   0.9995                   0.9996                   0.9994                   0.9999                   0.9999
+OC(CCCCCCCCCC)CN(CCN...                     1.0000                   0.9998                   0.9999                   1.0000                   1.0000                   0.9999                   1.0000                   0.9999                   1.0000                   0.9996                   0.9997                   0.9995                   0.9998                   0.9999
+CN(C)CCCC(OC(CCCCCCC...                     0.9999                   0.9999                   0.9999                   0.9999                   0.9999                   1.0000                   0.9999                   0.9999                   0.9999                   0.9995                   0.9996                   0.9994                   0.9999                   0.9999
+O=C1NC(CCCCN(CC(CCCC...                     1.0000                   0.9999                   1.0000                   1.0000                   1.0000                   0.9999                   1.0000                   1.0000                   1.0000                   0.9996                   0.9997                   0.9995                   0.9999                   0.9999
+CCCCCCCCC=CCCCCCCCC(...                     1.0000                   0.9997                   0.9999                   1.0000                   0.9999                   0.9999                   1.0000                   1.0000                   1.0000                   0.9994                   0.9996                   0.9994                   1.0000                   1.0000
+CCCCCCCCCCCCCCCCCC(=...                     1.0000                   0.9998                   0.9999                   1.0000                   1.0000                   0.9999                   1.0000                   1.0000                   1.0000                   0.9995                   0.9997                   0.9995                   0.9999                   1.0000
+CC(C)CCCC(C)C1CCC2C1...                     0.9995                   0.9998                   0.9996                   0.9995                   0.9996                   0.9995                   0.9996                   0.9994                   0.9995                   1.0000                   0.9999                   1.0000                   0.9993                   0.9993
+CC(C)CCCC(C)C1CCC2C1...                     0.9997                   0.9999                   0.9997                   0.9996                   0.9997                   0.9996                   0.9997                   0.9996                   0.9997                   0.9999                   1.0000                   0.9999                   0.9995                   0.9995
+CCC(CCC(C)C1CCC2C1(C...                     0.9995                   0.9998                   0.9995                   0.9994                   0.9995                   0.9994                   0.9995                   0.9994                   0.9995                   1.0000                   0.9999                   1.0000                   0.9992                   0.9993
+CCCCCCCCCCCCCC(=O)OC...                     0.9999                   0.9996                   0.9998                   0.9999                   0.9998                   0.9999                   0.9999                   1.0000                   0.9999                   0.9993                   0.9995                   0.9992                   1.0000                   1.0000
+CCCCCCCCCCCCCCCCCC(=...                     0.9999                   0.9997                   0.9999                   0.9999                   0.9999                   0.9999                   0.9999                   1.0000                   1.0000                   0.9993                   0.9995                   0.9993                   1.0000                   1.0000
+
+Off-diagonal cosine similarity stats:
+  Mean:   0.9998
+  Std:    0.0002
+  Min:    0.9992
+  Max:    1.0000
+
+  WARNING: High mean similarity (>0.90) — embeddings may be collapsed.
+
+Saved heatmap to /home/jmatthi2/deep_learning/COMET/molclr/molclr_similarity_matrix.png
+Done.

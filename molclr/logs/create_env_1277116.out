@@ -1,0 +1,263 @@
+============================================
+Setting up MolCLR
+============================================
+Repo already exists, skipping clone.
+Removing existing environment...
+
+Remove all packages in environment /home/jmatthi2/deep_learning/env_molclr:
+
+Creating conda environment...
+Channels:
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /home/jmatthi2/deep_learning/env_molclr
+
+  added / updated specs:
+    - python=3.7
+
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main 
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu 
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2026.3.19-h06a4308_0 
+  certifi            pkgs/main/linux-64::certifi-2022.12.7-py37h06a4308_0 
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.44-h9e0c5a2_3 
+  libffi             pkgs/main/linux-64::libffi-3.4.4-h6a678d5_1 
+  libgcc             pkgs/main/linux-64::libgcc-15.2.0-h69a1729_7 
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-15.2.0-h166f726_7 
+  libgomp            pkgs/main/linux-64::libgomp-15.2.0-h4751f2c_7 
+  libstdcxx          pkgs/main/linux-64::libstdcxx-15.2.0-h39759b7_7 
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-15.2.0-hc03a8fd_7 
+  libxcb             pkgs/main/linux-64::libxcb-1.17.0-h9b100fa_0 
+  libzlib            pkgs/main/linux-64::libzlib-1.3.1-hb25bd0a_0 
+  ncurses            pkgs/main/linux-64::ncurses-6.5-h7934f7d_0 
+  openssl            pkgs/main/linux-64::openssl-1.1.1w-h7f8727e_0 
+  pip                pkgs/main/linux-64::pip-22.3.1-py37h06a4308_0 
+  pthread-stubs      pkgs/main/linux-64::pthread-stubs-0.3-h0ce48e5_1 
+  python             pkgs/main/linux-64::python-3.7.16-h7a1cb2a_0 
+  readline           pkgs/main/linux-64::readline-8.3-hc2a1206_0 
+  setuptools         pkgs/main/linux-64::setuptools-65.6.3-py37h06a4308_0 
+  sqlite             pkgs/main/linux-64::sqlite-3.51.2-h3e8d24a_0 
+  tk                 pkgs/main/linux-64::tk-8.6.15-h54e0aa7_0 
+  wheel              pkgs/main/linux-64::wheel-0.38.4-py37h06a4308_0 
+  xorg-libx11        pkgs/main/linux-64::xorg-libx11-1.8.12-h9b100fa_1 
+  xorg-libxau        pkgs/main/linux-64::xorg-libxau-1.0.12-h9b100fa_0 
+  xorg-libxdmcp      pkgs/main/linux-64::xorg-libxdmcp-1.1.5-h9b100fa_0 
+  xorg-xorgproto     pkgs/main/linux-64::xorg-xorgproto-2024.1-h5eee18b_1 
+  xz                 pkgs/main/linux-64::xz-5.8.2-h448239c_0 
+  zlib               pkgs/main/linux-64::zlib-1.3.1-hb25bd0a_0 
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate /home/jmatthi2/deep_learning/env_molclr
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Installing PyTorch (CPU)...
+Looking in links: https://download.pytorch.org/whl/torch_stable.html
+Collecting torch==1.7.1+cpu
+  Downloading https://download.pytorch.org/whl/cpu/torch-1.7.1%2Bcpu-cp37-cp37m-linux_x86_64.whl (159.4 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 159.4/159.4 MB 54.3 MB/s eta 0:00:00
+Collecting torchvision==0.8.2+cpu
+  Downloading https://download.pytorch.org/whl/cpu/torchvision-0.8.2%2Bcpu-cp37-cp37m-linux_x86_64.whl (11.8 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.8/11.8 MB 202.5 MB/s eta 0:00:00
+Collecting typing-extensions
+  Using cached https://download.pytorch.org/whl/typing_extensions-4.9.0-py3-none-any.whl (32 kB)
+Collecting numpy
+  Using cached numpy-1.21.6-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (15.7 MB)
+Collecting pillow>=4.1.1
+  Using cached Pillow-9.5.0-cp37-cp37m-manylinux_2_28_x86_64.whl (3.4 MB)
+Collecting typing-extensions
+  Using cached https://download.pytorch.org/whl/typing_extensions-4.8.0-py3-none-any.whl (31 kB)
+  Using cached typing_extensions-4.7.1-py3-none-any.whl (33 kB)
+Installing collected packages: typing-extensions, pillow, numpy, torch, torchvision
+Successfully installed numpy-1.21.6 pillow-9.5.0 torch-1.7.1+cpu torchvision-0.8.2+cpu typing-extensions-4.7.1
+Installing PyG dependencies (CPU)...
+Looking in links: https://pytorch-geometric.com/whl/torch-1.7.0+cpu.html
+Collecting torch-geometric==1.6.3
+  Using cached torch_geometric-1.6.3-py3-none-any.whl
+Collecting torch-sparse==0.6.9
+  Downloading https://data.pyg.org/whl/torch-1.7.0%2Bcpu/torch_sparse-0.6.9-cp37-cp37m-linux_x86_64.whl (615 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 615.4/615.4 kB 16.1 MB/s eta 0:00:00
+Collecting torch-scatter==2.0.6
+  Downloading https://data.pyg.org/whl/torch-1.7.0%2Bcpu/torch_scatter-2.0.6-cp37-cp37m-linux_x86_64.whl (309 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 309.8/309.8 kB 26.2 MB/s eta 0:00:00
+Collecting googledrivedownloader
+  Using cached googledrivedownloader-0.4-py2.py3-none-any.whl (3.9 kB)
+Collecting scipy
+  Using cached scipy-1.7.3-cp37-cp37m-manylinux_2_12_x86_64.manylinux2010_x86_64.whl (38.1 MB)
+Requirement already satisfied: numpy in /weka/home/jmatthi2/deep_learning/env_molclr/lib/python3.7/site-packages (from torch-geometric==1.6.3) (1.21.6)
+Collecting requests
+  Using cached requests-2.31.0-py3-none-any.whl (62 kB)
+Requirement already satisfied: torch in /weka/home/jmatthi2/deep_learning/env_molclr/lib/python3.7/site-packages (from torch-geometric==1.6.3) (1.7.1+cpu)
+Collecting numba
+  Using cached numba-0.56.4-cp37-cp37m-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (3.5 MB)
+Collecting networkx
+  Using cached networkx-2.6.3-py3-none-any.whl (1.9 MB)
+Collecting python-louvain
+  Using cached python_louvain-0.16-py3-none-any.whl
+Collecting jinja2
+  Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Collecting rdflib
+  Using cached rdflib-6.3.2-py3-none-any.whl (528 kB)
+Collecting tqdm
+  Using cached tqdm-4.67.3-py3-none-any.whl (78 kB)
+Collecting scikit-learn
+  Using cached scikit_learn-1.0.2-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (24.8 MB)
+Collecting h5py
+  Using cached h5py-3.8.0-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (4.3 MB)
+Collecting ase
+  Using cached ase-3.22.1-py3-none-any.whl (2.2 MB)
+Collecting pandas
+  Using cached pandas-1.3.5-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (11.3 MB)
+Collecting matplotlib>=3.1.0
+  Using cached matplotlib-3.5.3-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl (11.2 MB)
+Collecting MarkupSafe>=2.0
+  Using cached MarkupSafe-2.1.5-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (25 kB)
+Collecting llvmlite<0.40,>=0.39.0dev0
+  Using cached llvmlite-0.39.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (34.6 MB)
+Collecting importlib-metadata
+  Using cached importlib_metadata-6.7.0-py3-none-any.whl (22 kB)
+Requirement already satisfied: setuptools in /weka/home/jmatthi2/deep_learning/env_molclr/lib/python3.7/site-packages (from numba->torch-geometric==1.6.3) (65.6.3)
+Collecting pytz>=2017.3
+  Using cached pytz-2026.1.post1-py2.py3-none-any.whl (510 kB)
+Collecting python-dateutil>=2.7.3
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Collecting importlib-metadata
+  Using cached importlib_metadata-4.13.0-py3-none-any.whl (23 kB)
+Collecting isodate<0.7.0,>=0.6.0
+  Using cached isodate-0.6.1-py2.py3-none-any.whl (41 kB)
+Collecting pyparsing<4,>=2.1.0
+  Using cached pyparsing-3.1.4-py3-none-any.whl (104 kB)
+Collecting idna<4,>=2.5
+  Using cached idna-3.10-py3-none-any.whl (70 kB)
+Requirement already satisfied: certifi>=2017.4.17 in /weka/home/jmatthi2/deep_learning/env_molclr/lib/python3.7/site-packages (from requests->torch-geometric==1.6.3) (2022.12.7)
+Collecting urllib3<3,>=1.21.1
+  Using cached urllib3-2.0.7-py3-none-any.whl (124 kB)
+Collecting charset-normalizer<4,>=2
+  Using cached charset_normalizer-3.4.7-py3-none-any.whl (61 kB)
+Collecting threadpoolctl>=2.0.0
+  Using cached threadpoolctl-3.1.0-py3-none-any.whl (14 kB)
+Collecting joblib>=0.11
+  Using cached joblib-1.3.2-py3-none-any.whl (302 kB)
+Requirement already satisfied: typing-extensions in /weka/home/jmatthi2/deep_learning/env_molclr/lib/python3.7/site-packages (from torch->torch-geometric==1.6.3) (4.7.1)
+Collecting zipp>=0.5
+  Using cached zipp-3.15.0-py3-none-any.whl (6.8 kB)
+Collecting six
+  Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Collecting kiwisolver>=1.0.1
+  Using cached kiwisolver-1.4.5-cp37-cp37m-manylinux_2_5_x86_64.manylinux1_x86_64.whl (1.1 MB)
+Collecting packaging>=20.0
+  Using cached packaging-24.0-py3-none-any.whl (53 kB)
+Requirement already satisfied: pillow>=6.2.0 in /weka/home/jmatthi2/deep_learning/env_molclr/lib/python3.7/site-packages (from matplotlib>=3.1.0->ase->torch-geometric==1.6.3) (9.5.0)
+Collecting cycler>=0.10
+  Using cached cycler-0.11.0-py3-none-any.whl (6.4 kB)
+Collecting fonttools>=4.22.0
+  Using cached fonttools-4.38.0-py3-none-any.whl (965 kB)
+Installing collected packages: pytz, googledrivedownloader, zipp, urllib3, torch-scatter, threadpoolctl, six, scipy, pyparsing, packaging, networkx, MarkupSafe, llvmlite, kiwisolver, joblib, idna, h5py, fonttools, cycler, charset-normalizer, torch-sparse, scikit-learn, requests, python-louvain, python-dateutil, jinja2, isodate, importlib-metadata, tqdm, rdflib, pandas, numba, matplotlib, ase, torch-geometric
+Successfully installed MarkupSafe-2.1.5 ase-3.22.1 charset-normalizer-3.4.7 cycler-0.11.0 fonttools-4.38.0 googledrivedownloader-0.4 h5py-3.8.0 idna-3.10 importlib-metadata-4.13.0 isodate-0.6.1 jinja2-3.1.6 joblib-1.3.2 kiwisolver-1.4.5 llvmlite-0.39.1 matplotlib-3.5.3 networkx-2.6.3 numba-0.56.4 packaging-24.0 pandas-1.3.5 pyparsing-3.1.4 python-dateutil-2.9.0.post0 python-louvain-0.16 pytz-2026.1.post1 rdflib-6.3.2 requests-2.31.0 scikit-learn-1.0.2 scipy-1.7.3 six-1.17.0 threadpoolctl-3.1.0 torch-geometric-1.6.3 torch-scatter-2.0.6 torch-sparse-0.6.9 tqdm-4.67.3 urllib3-2.0.7 zipp-3.15.0
+Installing other dependencies...
+Collecting PyYAML
+  Using cached PyYAML-6.0.1-cp37-cp37m-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (670 kB)
+Installing collected packages: PyYAML
+Successfully installed PyYAML-6.0.1
+Channels:
+ - conda-forge
+ - defaults
+Platform: linux-64
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /home/jmatthi2/deep_learning/env_molclr
+
+  added / updated specs:
+    - rdkit=2020.09.1.0
+
+
+The following NEW packages will be INSTALLED:
+
+  boost              conda-forge/linux-64::boost-1.74.0-py37h796e4cb_5 
+  boost-cpp          conda-forge/linux-64::boost-cpp-1.74.0-h75c5d50_8 
+  bottleneck         conda-forge/linux-64::bottleneck-1.3.5-py37hda87dfa_0 
+  bzip2              conda-forge/linux-64::bzip2-1.0.8-hda65f42_9 
+  cairo              pkgs/main/linux-64::cairo-1.18.4-h44eff21_0 
+  fontconfig         conda-forge/linux-64::fontconfig-2.17.1-h27c8c51_0 
+  freetype           conda-forge/linux-64::freetype-2.14.2-ha770c72_0 
+  giflib             conda-forge/linux-64::giflib-5.2.2-hd590300_0 
+  icu                conda-forge/linux-64::icu-70.1-h27087fc_0 
+  jpeg               conda-forge/linux-64::jpeg-9e-h0b41bf4_3 
+  lcms2              conda-forge/linux-64::lcms2-2.15-hfd0df8a_0 
+  lerc               conda-forge/linux-64::lerc-4.1.0-hdb68285_0 
+  libblas            conda-forge/linux-64::libblas-3.11.0-6_h4a7cf45_openblas 
+  libcblas           conda-forge/linux-64::libcblas-3.11.0-6_h0358290_openblas 
+  libdeflate         conda-forge/linux-64::libdeflate-1.17-h0b41bf4_0 
+  libexpat           conda-forge/linux-64::libexpat-2.7.5-hecca717_0 
+  libfreetype        conda-forge/linux-64::libfreetype-2.14.2-ha770c72_0 
+  libfreetype6       conda-forge/linux-64::libfreetype6-2.14.2-h73754d4_0 
+  libgfortran        conda-forge/linux-64::libgfortran-15.2.0-h69a702a_18 
+  libgfortran5       conda-forge/linux-64::libgfortran5-15.2.0-h68bc16d_18 
+  libglib            pkgs/main/linux-64::libglib-2.86.3-h8b17d9a_0 
+  libiconv           conda-forge/linux-64::libiconv-1.18-h3b78370_2 
+  liblapack          conda-forge/linux-64::liblapack-3.11.0-6_h47877c9_openblas 
+  libnsl             conda-forge/linux-64::libnsl-2.0.1-hb9d3cd8_1 
+  libopenblas        conda-forge/linux-64::libopenblas-0.3.32-pthreads_h94d23a6_0 
+  libpng             conda-forge/linux-64::libpng-1.6.55-h421ea60_0 
+  libtiff            conda-forge/linux-64::libtiff-4.5.0-h6adf6a1_2 
+  libuuid            conda-forge/linux-64::libuuid-2.42-h5347b49_0 
+  libwebp            conda-forge/linux-64::libwebp-1.2.4-h1daa5a0_1 
+  libwebp-base       conda-forge/linux-64::libwebp-base-1.2.4-h166bdaf_0 
+  nomkl              conda-forge/noarch::nomkl-1.0-h5ca1d4c_0 
+  numexpr            conda-forge/linux-64::numexpr-2.8.3-py37h85a3170_100 
+  numpy              conda-forge/linux-64::numpy-1.21.6-py37h976b520_0 
+  packaging          conda-forge/noarch::packaging-23.2-pyhd8ed1ab_0 
+  pandas             pkgs/main/linux-64::pandas-1.3.5-py37h8c16a72_0 
+  pcre2              conda-forge/linux-64::pcre2-10.46-h1321c63_0 
+  pillow             pkgs/main/linux-64::pillow-9.4.0-py37h6a678d5_0 
+  pixman             conda-forge/linux-64::pixman-0.46.4-h54a6638_1 
+  pycairo            conda-forge/linux-64::pycairo-1.21.0-py37h0afab05_1 
+  python-dateutil    conda-forge/noarch::python-dateutil-2.9.0-pyhd8ed1ab_0 
+  python_abi         conda-forge/linux-64::python_abi-3.7-4_cp37m 
+  pytz               conda-forge/noarch::pytz-2024.2-pyhd8ed1ab_0 
+  rdkit              conda-forge/linux-64::rdkit-2020.09.1-py37h0c252aa_0 
+  six                conda-forge/noarch::six-1.16.0-pyh6c4a22f_0 
+  xorg-libxext       conda-forge/linux-64::xorg-libxext-1.3.7-hb03c661_0 
+  xorg-libxrender    conda-forge/linux-64::xorg-libxrender-0.9.12-hb9d3cd8_0 
+  zstd               conda-forge/linux-64::zstd-1.5.7-hb78ec9c_6 
+
+The following packages will be UPDATED:
+
+  certifi            pkgs/main/linux-64::certifi-2022.12.7~ --> conda-forge/noarch::certifi-2024.8.30-pyhd8ed1ab_0 
+  openssl              pkgs/main::openssl-1.1.1w-h7f8727e_0 --> conda-forge::openssl-3.6.2-h35e630c_0 
+
+The following packages will be SUPERSEDED by a higher-priority channel:
+
+  python                pkgs/main::python-3.7.16-h7a1cb2a_0 --> conda-forge::python-3.7.12-hf930737_100_cpython 
+
+
+
+Downloading and Extracting Packages: ...working... done
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+============================================
+Done. Verify with:
+  conda activate /home/jmatthi2/deep_learning/env_molclr
+  python -c 'import torch; import torch_geometric; import rdkit; print("OK")'
+============================================
