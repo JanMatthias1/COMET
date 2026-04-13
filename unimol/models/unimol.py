@@ -36,6 +36,20 @@ class NPUniMolModel(BaseUnicoreModel):
             return check_float
         
         parser.add_argument(
+            "--aux-model",
+            type=str,
+            default="none",
+            choices=["none", "gin", "schnet", "infomax"],
+            help="Which auxiliary 3D/2D embedding to inject (if any)",
+        )
+        parser.add_argument(
+            "--aux-embed-path",
+            type=str,
+            default=None,
+            help="Path to the .npy file containing the auxiliary embeddings",
+        )
+
+        parser.add_argument(
             "--lnp-encoder-layers", type=int, metavar="L", help="num encoder layers for LNP model"
         )
         parser.add_argument(
@@ -366,12 +380,21 @@ class NPUniMolModel(BaseUnicoreModel):
         else:
             self.component_rep_dim = args.encoder_embed_dim + args.percent_embed_dim + args.component_types_embed_dim
         
-        # STRATEGY B: Consolidated Projection Layer and Learnable Gate
-        # Use args to ensure dimensions stay in sync even if you change configs
-        self.gnn_projection = nn.Linear(args.gnn_embed_dim, args.encoder_embed_dim)
+        # --- MODULAR AUXILIARY EMBEDDING ADAPTERS ---
+        self.aux_model = getattr(args, "aux_model", "none")
         
-        # Initialized at -4 so sigmoid(alpha) starts near 0 (blocking noise)
-        self.alpha = nn.Parameter(torch.full((1,), -4.0))
+        if self.aux_model == "gin":
+            self.aux_proj = nn.Linear(300, args.encoder_embed_dim)
+            print("🚀 Initialized GIN Adapter (300 -> 512)")
+        elif self.aux_model == "schnet":
+            self.aux_proj = nn.Linear(128, args.encoder_embed_dim)
+            print("🚀 Initialized SchNet Adapter (128 -> 512)")
+        elif self.aux_model == "infomax":
+            self.aux_proj = nn.Linear(256, args.encoder_embed_dim)
+            print("🚀 Initialized 3D Infomax Adapter (256 -> 512)")
+        else:
+            self.aux_proj = None
+            print("⚪ Running Baseline COMET (No Aux Embeddings)")
 
         # Create hidden state for [CLS] of LNP model
         # self.lnp_CLS_embed =  nn.Parameter(torch.zeros(self.component_rep_dim).normal_(mean=0.0, std=0.02))
@@ -518,20 +541,25 @@ class NPUniMolModel(BaseUnicoreModel):
         flattened_mol_batch_ids[flattened_mol_batch_ids==-1] = mol_rep.shape[0] - 1 # replace -1 index values with largest index value to select pad_idx's rep, to avoid indexing error from index_select
         flattened_lnp_mol_rep = torch.index_select(mol_rep, 0, flattened_mol_batch_ids)
         lnp_mol_rep = torch.unflatten(flattened_lnp_mol_rep, 0, mol_batch_ids_shape)
-        # Convert GNN embeds to rep using the exact same indexing logic
-        gnn_embed = mol_model_input['gnn_embed'].type_as(mol_rep)
-        pad_gnn = torch.zeros_like(gnn_embed[0]).unsqueeze(0)
-        gnn_embed = torch.cat([gnn_embed, pad_gnn], dim=0)
-        flattened_lnp_gnn_rep = torch.index_select(gnn_embed, 0, flattened_mol_batch_ids)
-        lnp_gnn_rep = torch.unflatten(flattened_lnp_gnn_rep, 0, mol_batch_ids_shape)
 
-        # STRATEGY B: Project GNN and inject it into the Uni-Mol representation
-        gnn_rep_projected = self.gnn_projection(lnp_gnn_rep)
-        gate = torch.sigmoid(self.alpha)
-        lnp_mol_rep = lnp_mol_rep + (gate * gnn_rep_projected)
+        # --- INJECT AUXILIARY EMBEDDINGS (FORCED ADDITION) ---
+        if self.aux_proj is not None and 'gnn_embed' in mol_model_input:
+            # Note: We still extract from 'gnn_embed' because the dataloader 
+            # uses that dictionary key regardless of which model we pass in.
+            aux_embed = mol_model_input['gnn_embed'].type_as(mol_rep)
+            
+            # Indexing to match the LNP components
+            pad_aux = torch.zeros_like(aux_embed[0]).unsqueeze(0)
+            aux_embed = torch.cat([aux_embed, pad_aux], dim=0)
+            flattened_aux_rep = torch.index_select(aux_embed, 0, flattened_mol_batch_ids)
+            lnp_aux_rep = torch.unflatten(flattened_aux_rep, 0, mol_batch_ids_shape)
 
-        if torch.rand(1).item() < 0.01: # Reduced frequency to 1% to keep logs clean
-            print(f"--- Current GNN Gate Value (Sigmoid Alpha): {gate.item():.5f} ---")
+            # Project to 512D and Force Add to UniMol
+            projected_aux = self.aux_proj(lnp_aux_rep)
+            lnp_mol_rep = lnp_mol_rep + projected_aux
+            
+        # (Proceed with existing component concatenation...)
+        # lnp_component_rep = torch.cat([lnp_mol_rep, percents_rep...])
 
         # Convert percents to rep 
         percents = np_model_input['percents']

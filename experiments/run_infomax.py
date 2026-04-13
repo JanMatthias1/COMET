@@ -80,7 +80,7 @@ for seed in seeds:
                                                                                     max_epoch = int(epoch // (1 - loss_sample_dropout))
 
                                                                                     # unique experiment name (identifier)
-                                                                                    exp_name = "SchNet_Run"
+                                                                                    exp_name = "InfoMax_Run"
                                                                                     
                                                                                     print("task_name: ", task_name)
                                                                                     if save_all_model_weights:
@@ -145,7 +145,7 @@ for seed in seeds:
                                                                                         --lnp-encoder-layers {lnp_encoder_layers} --lnp-encoder-embed-dim {lnp_encoder_embed_dim} --lnp-encoder-ffn-embed-dim {lnp_encoder_ffn_embed_dim} --lnp-encoder-attention-heads {lnp_encoder_attention_heads} \
                                                                                         --noise-augment-percent --percent-noise {percent_noise} --percent-noise-type {percent_noise_type} \
     --contrast-margin-coeff {contrast_margin_coeff} \
-    --aux-model schnet --aux-embed-path ../schnet/schnet_lipid_embeddings.npy", 
+    --aux-model infomax --gnn-embed-path ../3dinfomax/3dinfomax_lipid_embeddings.npy", 
     shell=True)
 
                                                                                     # eval params

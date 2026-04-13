@@ -145,7 +145,7 @@ for seed in seeds:
                                                                                         --lnp-encoder-layers {lnp_encoder_layers} --lnp-encoder-embed-dim {lnp_encoder_embed_dim} --lnp-encoder-ffn-embed-dim {lnp_encoder_ffn_embed_dim} --lnp-encoder-attention-heads {lnp_encoder_attention_heads} \
                                                                                         --noise-augment-percent --percent-noise {percent_noise} --percent-noise-type {percent_noise_type} \
     --contrast-margin-coeff {contrast_margin_coeff} \
-    --aux-model schnet --aux-embed-path ../schnet/schnet_lipid_embeddings.npy", 
+    --aux-model schnet --gnn-embed-path ../schnet/schnet_lipid_embeddings.npy", 
     shell=True)
 
                                                                                     # eval params
