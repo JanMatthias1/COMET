@@ -1,0 +1,399 @@
+Global vmin=-0.9993  vmax=1.0000
+
+=== GIN ===
+  Similarity warnings (sim > 0.99):
+    WARNING - nearly identical embeddings:
+      Cholesterol
+      Beta-sitosterol
+      Cosine sim: 0.9946
+  Off-diagonal  mean=0.5554  std=0.2542  min=0.1421  max=0.9946
+  Saved to /home/jmatthi2/deep_learning/COMET/heatmaps/figures/gin_similarity_matrix.png
+
+=== MolCLR ===
+  Similarity warnings (sim > 0.99):
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      KC2
+      Cosine sim: 0.9998
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      MC3
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      SM-102
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      C12-200
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      L319
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      CKK-E12
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      DOPE
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      DSPC
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      Cholesterol
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      DC-Cholesterol
+      Cosine sim: 0.9997
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      Beta-sitosterol
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      C14-PEG
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      ALC-0315
+      C18-PEG
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      KC2
+      MC3
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      KC2
+      SM-102
+      Cosine sim: 0.9998
+    WARNING - nearly identical embeddings:
+      KC2
+      C12-200
+      Cosine sim: 0.9998
+    WARNING - nearly identical embeddings:
+      KC2
+      L319
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      KC2
+      CKK-E12
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      KC2
+      DOPE
+      Cosine sim: 0.9997
+    WARNING - nearly identical embeddings:
+      KC2
+      DSPC
+      Cosine sim: 0.9998
+    WARNING - nearly identical embeddings:
+      KC2
+      Cholesterol
+      Cosine sim: 0.9998
+    WARNING - nearly identical embeddings:
+      KC2
+      DC-Cholesterol
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      KC2
+      Beta-sitosterol
+      Cosine sim: 0.9998
+    WARNING - nearly identical embeddings:
+      KC2
+      C14-PEG
+      Cosine sim: 0.9996
+    WARNING - nearly identical embeddings:
+      KC2
+      C18-PEG
+      Cosine sim: 0.9997
+    WARNING - nearly identical embeddings:
+      MC3
+      SM-102
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      MC3
+      C12-200
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      MC3
+      L319
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      MC3
+      CKK-E12
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      MC3
+      DOPE
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      MC3
+      DSPC
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      MC3
+      Cholesterol
+      Cosine sim: 0.9996
+    WARNING - nearly identical embeddings:
+      MC3
+      DC-Cholesterol
+      Cosine sim: 0.9997
+    WARNING - nearly identical embeddings:
+      MC3
+      Beta-sitosterol
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      MC3
+      C14-PEG
+      Cosine sim: 0.9998
+    WARNING - nearly identical embeddings:
+      MC3
+      C18-PEG
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      SM-102
+      C12-200
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      SM-102
+      L319
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      SM-102
+      CKK-E12
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      SM-102
+      DOPE
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      SM-102
+      DSPC
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      SM-102
+      Cholesterol
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      SM-102
+      DC-Cholesterol
+      Cosine sim: 0.9996
+    WARNING - nearly identical embeddings:
+      SM-102
+      Beta-sitosterol
+      Cosine sim: 0.9994
+    WARNING - nearly identical embeddings:
+      SM-102
+      C14-PEG
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      SM-102
+      C18-PEG
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      C12-200
+      L319
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      C12-200
+      CKK-E12
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      C12-200
+      DOPE
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      C12-200
+      DSPC
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      C12-200
+      Cholesterol
+      Cosine sim: 0.9996
+    WARNING - nearly identical embeddings:
+      C12-200
+      DC-Cholesterol
+      Cosine sim: 0.9997
+    WARNING - nearly identical embeddings:
+      C12-200
+      Beta-sitosterol
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      C12-200
+      C14-PEG
+      Cosine sim: 0.9998
+    WARNING - nearly identical embeddings:
+      C12-200
+      C18-PEG
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      L319
+      CKK-E12
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      L319
+      DOPE
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      L319
+      DSPC
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      L319
+      Cholesterol
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      L319
+      DC-Cholesterol
+      Cosine sim: 0.9996
+    WARNING - nearly identical embeddings:
+      L319
+      Beta-sitosterol
+      Cosine sim: 0.9994
+    WARNING - nearly identical embeddings:
+      L319
+      C14-PEG
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      L319
+      C18-PEG
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      CKK-E12
+      DOPE
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      CKK-E12
+      DSPC
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      CKK-E12
+      Cholesterol
+      Cosine sim: 0.9996
+    WARNING - nearly identical embeddings:
+      CKK-E12
+      DC-Cholesterol
+      Cosine sim: 0.9997
+    WARNING - nearly identical embeddings:
+      CKK-E12
+      Beta-sitosterol
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      CKK-E12
+      C14-PEG
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      CKK-E12
+      C18-PEG
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      DOPE
+      DSPC
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      DOPE
+      Cholesterol
+      Cosine sim: 0.9994
+    WARNING - nearly identical embeddings:
+      DOPE
+      DC-Cholesterol
+      Cosine sim: 0.9996
+    WARNING - nearly identical embeddings:
+      DOPE
+      Beta-sitosterol
+      Cosine sim: 0.9994
+    WARNING - nearly identical embeddings:
+      DOPE
+      C14-PEG
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      DOPE
+      C18-PEG
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      DSPC
+      Cholesterol
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      DSPC
+      DC-Cholesterol
+      Cosine sim: 0.9997
+    WARNING - nearly identical embeddings:
+      DSPC
+      Beta-sitosterol
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      DSPC
+      C14-PEG
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      DSPC
+      C18-PEG
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      Cholesterol
+      DC-Cholesterol
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      Cholesterol
+      Beta-sitosterol
+      Cosine sim: 1.0000
+    WARNING - nearly identical embeddings:
+      Cholesterol
+      C14-PEG
+      Cosine sim: 0.9993
+    WARNING - nearly identical embeddings:
+      Cholesterol
+      C18-PEG
+      Cosine sim: 0.9993
+    WARNING - nearly identical embeddings:
+      DC-Cholesterol
+      Beta-sitosterol
+      Cosine sim: 0.9999
+    WARNING - nearly identical embeddings:
+      DC-Cholesterol
+      C14-PEG
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      DC-Cholesterol
+      C18-PEG
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      Beta-sitosterol
+      C14-PEG
+      Cosine sim: 0.9992
+    WARNING - nearly identical embeddings:
+      Beta-sitosterol
+      C18-PEG
+      Cosine sim: 0.9993
+    WARNING - nearly identical embeddings:
+      C14-PEG
+      C18-PEG
+      Cosine sim: 1.0000
+  Off-diagonal  mean=0.9998  std=0.0002  min=0.9992  max=1.0000
+  Saved to /home/jmatthi2/deep_learning/COMET/heatmaps/figures/molclr_similarity_matrix.png
+
+=== SchNet ===
+  Similarity warnings (sim > 0.99):
+    None found.
+  Off-diagonal  mean=0.9057  std=0.0716  min=0.7448  max=0.9873
+  Saved to /home/jmatthi2/deep_learning/COMET/heatmaps/figures/schnet_similarity_matrix.png
+
+=== UniMol ===
+  Similarity warnings (sim > 0.99):
+    None found.
+  Off-diagonal  mean=0.7853  std=0.0976  min=0.6214  max=0.9801
+  Saved to /home/jmatthi2/deep_learning/COMET/heatmaps/figures/unimol_similarity_matrix.png
+
+=== 3D Infomax ===
+  Similarity warnings (sim > 0.99):
+    None found.
+  Off-diagonal  mean=-0.0765  std=0.3285  min=-0.9993  max=0.4985
+  Saved to /home/jmatthi2/deep_learning/COMET/heatmaps/figures/3d infomax_similarity_matrix.png
+
+Done.
