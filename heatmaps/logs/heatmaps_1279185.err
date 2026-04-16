@@ -1,6 +1,0 @@
-Traceback (most recent call last):
-  File "/home/jmatthi2/deep_learning/COMET/heatmaps/plot_similarity_heatmaps.py", line 31, in <module>
-    embeddings = np.load(os.path.join(base_dir, fname), allow_pickle=True).item()
-  File "/home/jmatthi2/deep_learning/env_schnet/lib/python3.10/site-packages/numpy/lib/npyio.py", line 427, in load
-    fid = stack.enter_context(open(os_fspath(file), "rb"))
-FileNotFoundError: [Errno 2] No such file or directory: '/home/jmatthi2/deep_learning/COMET/heatmaps/3dinfomax_lipid_embeddings.npy'

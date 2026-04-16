@@ -1,3 +1,4 @@
+Global vmin=-0.4574  vmax=1.0000
 
 === GIN ===
   Similarity warnings (sim > 0.99):
@@ -388,5 +389,18 @@
     None found.
   Off-diagonal  mean=0.7853  std=0.0976  min=0.6214  max=0.9801
   Saved to /home/jmatthi2/deep_learning/COMET/heatmaps/figures/unimol_similarity_matrix.png
+
+=== 3D Infomax ===
+  Similarity warnings (sim > 0.99):
+    WARNING - nearly identical embeddings:
+      Cholesterol
+      Beta-sitosterol
+      Cosine sim: 0.9995
+    WARNING - nearly identical embeddings:
+      C14-PEG
+      C18-PEG
+      Cosine sim: 0.9915
+  Off-diagonal  mean=-0.0703  std=0.3168  min=-0.4574  max=0.9995
+  Saved to /home/jmatthi2/deep_learning/COMET/heatmaps/figures/3d infomax_similarity_matrix.png
 
 Done.
