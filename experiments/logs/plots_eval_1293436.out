@@ -1,0 +1,24 @@
+Loading data...
+
+============================================================
+📊 4-WAY METRICS SUMMARY (FORCED ADDITION ARCHITECTURE)
+============================================================
+
+--- Baseline COMET ---
+B16F10 Cells: Spearman R: 0.8781 | Pearson R: 0.8582
+DC2.4 Cells: Spearman R: 0.9432 | Pearson R: 0.9309
+
+--- GIN (Forced Addition) ---
+B16F10 Cells: Spearman R: 0.7474 | Pearson R: 0.7636
+DC2.4 Cells: Spearman R: 0.7387 | Pearson R: 0.8278
+
+--- SchNet 3D (Forced Addition) ---
+B16F10 Cells: Spearman R: 0.7812 | Pearson R: 0.7882
+DC2.4 Cells: Spearman R: 0.7548 | Pearson R: 0.8259
+
+--- 3D Infomax (Forced Addition) ---
+B16F10 Cells: Spearman R: 0.0732 | Pearson R: 0.0835
+DC2.4 Cells: Spearman R: 0.2018 | Pearson R: 0.1246
+============================================================
+
+✅ Comparison plot saved successfully to: /weka/home/jmatthi2/deep_learning/COMET_matias/experiments/model_comparison_scatter_4way.png

@@ -3,9 +3,9 @@ import numpy as np
 
 # --- 1. The Data ---
 models = ['Baseline COMET', 'GIN\n(2D)', 'SchNet\n(3D)', '3D Infomax\n(3D)']
-epochs = [135, 85, 140, 40]
-total_time = [32.77, 20.32, 33.38, 6.35]
-time_per_epoch = [9.51, 9.52, 9.52, 9.52]
+epochs = [135, 85, 140, 117]
+total_time = [32.77, 20.32, 33.38, 38.38]
+time_per_epoch = [9.51, 9.52, 9.52, 11.42]
 
 # --- 2. Styling (Publication Ready) ---
 # Soft, professional color palette (Grey for baseline, Blue/Green/Red for experiments)

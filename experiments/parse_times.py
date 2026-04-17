@@ -3,10 +3,10 @@ import re
 
 # The log files we want to compare
 log_files = {
-    "Baseline COMET": "baseline_output.log", 
-    "GIN (Baseline)": "gin_output.log",
-    "SchNet 3D": "schnet_output.log",
-    "3D Infomax": "infomax_output.log"
+    "Baseline COMET": "logs/baseline_output.log", 
+    "GIN (Baseline)": "logs/gin_output.log",
+    "SchNet 3D": "logs/schnet_output.log",
+    "3D Infomax": "logs/infomax_1292351.out"
 }
 
 def parse_log(log_path):
